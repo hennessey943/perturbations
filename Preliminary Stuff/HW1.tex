@@ -1,0 +1,179 @@
+\input{def}
+\pagestyle{empty}
+\begin{document}
+
+\begin{center}
+\large{ MATH-6620 \hspace{1in}  PERTURBATION METHODS \hspace{1in}SPRING 2016\\ Homework-1 \\ Assigned Tuesday January 26, 2016 \\ Due Friday February 5, 2016}\end{center}
+
+\vspace{6 ex}
+
+{\bf Name: Michael Hennessey} \hfill
+
+\vspace{6 ex}
+
+
+\bc {\bf PROBLEMS} \ec
+
+\benum
+
+% Problem 1
+\item
+\benum
+ \item As $\e \to 0,$ find a 3-term perturbation expansion for each root of $\e x^3+x-1=0.$
+ \item For $\e$ small, find the first three terms of the perturbation expansion of $x(\e),$ the solution near zero, of
+\begin{equation*}
+\sqrt 2 \sin \left(x+\frac{\pi}{4}\right) -1 -x + \frac{x^2}{2} + \frac{1}{6}\e = 0.
+\end{equation*}
+\eenum
+
+        Solution:\\
+
+        \benum
+            \item We begin by expanding $x$:
+            $$x=x_0+\e x_1+\e^2 x_2+...$$
+            Thus the equation becomes
+            $$\e(x_0+\e x_1+\e^2 x_2+...)^3+x_0+\e x_1+\e^2 x_2+...-1=0.$$
+            Keeping only the $\e^2$ terms, the above simplifies by expanding the cube and reordering terms to the equation
+            $$x_0-1+\e(x_0^3+x_1)+\e^2(3x_0^2x_1+x_2)+...=0.$$
+            However, we can only solve for one root. We get the equations\\
+            $\e^0: \; x_0=1$ \\
+            $\e^1: \; x_0^3+x_1=0\implies x_1=-x_0^3=-1$\\
+            $\e^2: \; 3x_0^2 x_1+x_2=0\implies x_2=-3x_0^2 x_1=3.$\\
+            Thus one root is $x^{(1)}=1-\e+3\e^2+...$\\
+
+            We realize the procedure has broken down because our expansion of $x$ fails to balance the equation. As $\e\to 0$, $\e x^3+x$ must balance. Thus
+            $$\e x^3\approx x\implies \e x^2\approx 1\implies x^2\approx \frac{1}{\e}\implies x\approx\frac{1}{\sqrt{\e}}.$$
+            We then scale the equation with $y=\frac{x}{\sqrt{\e}}$ which turns the original equation into
+            $$\e\frac{y^3}{\e^{3/2}}+\frac{y}{\sqrt{\e}}-1=0.$$
+            $$\implies y^3+y-\sqrt{\e}=0.$$
+            Thus we let $y=y_0+\sqrt{\e}y_1+\e y_2+\e^{3/2}y_3+...$ which gives
+            $$(y_0+\sqrt{\e}y_1+\e y_2+\e^{3/2}y_3+...)^3+y_0+\sqrt{\e}y_1+\e y_2+\e^{3/2}y_3+...-\sqrt{\e}=0.$$
+            Expanding, reordering, and keeping all terms up to $\e^{3/2}$ results in
+            $$y_0^3+y_0+\sqrt{\e}(3y_0^2y_1+y_1-1)+\e(3y_0y_1^2+3y_0^2y_2+y_2)+\e^{3/2}(3y_0^2y_3+4y_0y_1y_3+y_1^3+2y_0y_1^2+y_3)+...=0$$
+            Thus we can solve for all three roots. Beginning with the $\e^0$ terms, and continuing in increasing powers of $\e$ we solve:\\
+            $\e^0: \; y_0^3+y_0=0\implies y_0(y_0^2+1)=0\implies y_0=0,i,-i$\\
+            $\e^{1/2}: \; 3y_0^2y_1+y_1-1=0\implies y_1=\frac{1}{3y_0^2+1}$\\
+            $\e^1: \; 3y_0y_1^2+3y_0^2y_2+y_2=0\implies y_2=\frac{-3y_0y_1^2}{3y_0^2+1}$\\
+            $\e^{3/2}: \; 3y_0^2y_3+4y_0y_1y_3+y_1^3+2y_0y_1^2+y_3=0\implies y_3=\frac{-y_1^3-2y_0y_1^2}{3y_0^2+4y_0y_1+1}$\\
+            Thus we have three solutions for $y$:
+            $$y^{(1)}=\sqrt{\e}-\e^{3/2}+...$$
+            $$y^{(2)}=i-\frac{1}{2}\e^{1/2}+\frac{3}{8}i\e+\frac{4i-1}{16(i+1)}\e^{3/2}$$
+            $$y^{(3)}=-i-\frac{1}{2}e^{1/2}-\frac{3}{8}i\e+\frac{4i+1}{16(i-1)}\e^{3/2}.$$
+            Finally, we then use the identity $y=\frac{x}{\sqrt{\e}}$ to get the solutions to the original equation:
+            $$x^{(1)}=1-\e+3\e^2+...\;\text{(from the unscaled solution attempt)}$$
+            $$x^{(2)}=i\e^{1/2}-\frac{1}{2}\e+\frac{3}{8}i\e^{3/2}+\frac{4i-1}{16(i+1)}\e^2+...$$
+            $$x^{(3)}=-i\e^{1/2}-\frac{1}{2}\e-\frac{3}{8}i\e^{3/2}+\frac{4i+1}{16(i-1)}\e^2+...$$
+
+            \item We begin by rewriting the equation using the trigonometric identity $\sin(a+b)=\sin(a)\cos(b)+\cos(a)\sin(b)$:
+                $$\sqrt{2}\sin(x+\frac{\pi}{4})-1-x+\frac{x^2}{2}+\frac{1}{6}\e=0$$
+                becomes
+                $$\sin(x)+\cos(x)-1-x+\frac{x^2}{2}+\frac{1}{6}\e=0.$$
+                We also expand the $\sin(x)$ and $\cos(x)$ terms to get the equation
+                $$x-\frac{x^3}{3!}+...+1-\frac{x^2}{2!}+...-1-x+\frac{x^2}{2}+\frac{1}{6}\e=0.$$
+                This simplifies to $x=\e^{1/3}$. Thus we expand $x$ in powers of $\e^{1/3}$, $x=x_0+x_1\e^{1/3}+x_2\e^{2/3}+...$ However, since we are looking for the solution near $x=0$ we can let $x_0=0$. Thus we expand $x=x_1\e^{1/3}+x_2\e^{2/3}+x_3\e+...$ and begin with
+                $$x-\frac{x^3}{3!}+\frac{x^5}{5!}+...+1-\frac{x^2}{2!}+\frac{x^4}{4!}+...-1-x+\frac{x^2}{2}+\frac{1}{6}\e=0.$$
+                After cancellation the equation becomes
+                $$-\frac{x^3}{3!}+\frac{x^4}{4!}+\frac{x^5}{5!}+\frac{1}{6}\e+...=0$$
+                Then substituting the expanded $x$ gives
+                $$-\frac{(x_1\e^{1/3}+x_2\e^{2/3}+x_3\e+...)^3}{6}+\frac{(x_1\e^{1/3}+x_2\e^{2/3}+x_3\e+...)^4}{24}+\frac{(x_1\e^{1/3}+x_2\e^{2/3}+x_3\e+...)^5}{5!}+\frac{1}{6}\e=0.$$
+                After some simplification and rearrangement we have
+                $$-\frac{1}{6}x_1\e+\frac{1}{6}\e+(\frac{1}{24}x_1^4-\frac{1}{2}x_1^2x_2\e^{4/3})\e^{4/3}+(\frac{1}{120}x_1^5+\frac{1}{6}x_1^3x_2-\frac{1}{2}x_1x_2^2-\frac{1}{2}x_1^2x_3)\e^{5/3}+...=0.$$
+                We then break the equation down into powers of $\e$:\\
+                $\e^1: \; \frac{1}{6}x_1=\frac{1}{6}\implies x_1=1$\\
+                $\e^{4/3}\; -\frac{1}{2}x_1^2x_2+\frac{1}{12}x+1^2=0\implies x_2=\frac{1}{12}$\\
+                $\e^{5/3}\; -\frac{1}{2}x_1^2x_3-\frac{1}{2}x_1x_2^2+\frac{1}{6}x_1^3x_2+\frac{1}{120}x_1^5=0\implies x_3=\frac{197}{5445}$\\
+                Therefore we have the perturbation expansion of the solution near zero
+                $$x(\e)=\e^{1/3}+\frac{1}{12}\e^{2/3}+\frac{197}{5445}\e+...$$
+
+
+        \eenum
+
+
+
+% Problem 2
+ \item Find a $2$-term expansion, for $\e$ small, of the solution of the initial-value problem
+ \begin{equation*}
+y'=2x+\e y^2, \quad y=0 \; \text{at}\; x=0.
+\end{equation*}
+Check whether your expansion is uniformly valid in the interval (i) $0 \le x \le 1,$ and (ii)  $x \ge 0.$\\
+
+Solution:\\
+
+    We begin by letting $y=y_0+\e y_1+...$ Thus the differential equation becomes
+    $$y_0'+\e y_1'+...=2x+\e(y_0+\e y_1+...)^2$$
+    with initial conditions
+    $$y_0(0)+\e y_1(0)+...=0.$$
+    By expanding and reordering the equation we get
+    $$y_0'-2x+\e y_1'+...=\e y_0^2+...$$
+    We then split the equation up into equations of powers of $\e$:\\
+    $\e^0: \; y_0'=2x\implies y=x^2+C,\;\;y_0(0)=0\implies y_0=x^2$\\
+    $\e^1: \; y_1'=y_0^2=x^4\implies y_1=\frac{1}{5}x^5+D,\;\; y_1(0)=0\implies y_1=\frac{1}{5}x^5.$\\
+    Thus a 2-term expansion for $\e$ small is $y=x^2+\e\frac{x^5}{5}+...$\\
+
+
+    We now check the uniformity of the expansion.
+    \benum
+    \item $0\le x\le 1$\\
+    For $x=O(1)$, clearly, $y=O(1)$. However, for $x$ near 0 some non-uniformity is introduced. It is easy to see that if $x=O(\e)$, then $y=O(\e^2)$.
+    \item $x\geq 0$\\
+    For $x$ near 0, and $x=O(1)$ the results above hold. However, if $x$ gets large, say $x=\frac{\xi}{\e}$ then we see that $y=o(\e^{-4})$.
+    \eenum
+
+% Problem 3
+ \item Expand each of the functions below in a power series in $\e,$ upto and including the $O(\e^3)$ term.
+ The result of each part will be useful in the subsequent parts.
+ \benum
+ \item $$ \frac{\e}{\sqrt{4-\e^2}},$$
+ \item $$ \sin \left(\frac{\e}{\sqrt{4-\e^2}}\right),$$
+ \item $$\ln \left[2 +  \sin \left(\frac{\e}{\sqrt{4-\e^2}}\right) \right].$$
+\eenum
+
+Solution:\\
+    \benum
+    \item $\frac{\e}{\sqrt{4-\e^2}}$
+    $$f(\e)=\frac{\e}{\sqrt{4-\e^2}}\implies f(0)=0$$
+    $$f'(\e)=\frac{4}{(4-\e^2)^{3/2}}\implies f'(0)=\frac{1}{2}$$
+    $$f''(\e)=\frac{12\e}{(4-\e^2)^{5/2}}\implies f''(0)=0$$
+    $$f'''(\e)=\frac{48(\e^2+1)}{(4-\e^2)^{7/2}}\implies f'''(0)=\frac{3}{8}$$
+    Thus we get an expansion
+    $$\frac{\e}{\sqrt{4-\e^2}}=\frac{1}{2}\e+\frac{1}{16}\e^3+...$$
+
+    \item $\sin \left(\frac{\e}{\sqrt{4-\e^2}}\right)$\\
+    Here we use the fact that $\sin(x)=x-\frac{x^3}{3!}+\frac{x^5}{5!}+...$
+    $$\sin \left(\frac{\e}{\sqrt{4-\e^2}}\right)=(\frac{1}{2}\e+\frac{1}{16}\e^3+...)-\frac{\frac{1}{8}\e^3+...}{6}+...=\frac{1}{2}\e+\frac{1}{24}\e^3+...$$
+
+    \item $\ln \left[2 +  \sin \left(\frac{\e}{\sqrt{4-\e^2}}\right) \right]$\\
+    We begin by noting that $\ln(2+x)=\ln(2(1+\frac{x}{2})=\ln(2)+\ln(1+\frac{x}{2}).$ We then expand $\ln(1+\frac{x}{2})$ to get
+    $$\ln(1+\frac{x}{2})=\frac{x}{2}-\frac{x^2}{8}+\frac{x^3}{24}+...$$
+    Thus combining these results and setting $x=\frac{1}{2}\e+\frac{1}{24}\e^3+...$ we get the solution
+    $$\ln \left[2 +  \sin \left(\frac{\e}{\sqrt{4-\e^2}}\right) \right]=\ln(2)=\frac{1}{4}\e-\frac{1}{32}\e^2+\frac{5}{192}\e^3+...$$
+    \eenum
+% Problem 4
+\item Consider the following sequence.
+\begin{equation*}
+\phi_1(\e) = \ln(1+2\e^2), \; \phi_2(\e) = \arcsin (\e), \; \phi_3(\e) = \frac{\sqrt{1+\e}}{\sin \e}, \;
+	\phi_4(\e) = \e \ln [\sinh(1/\e)], \; \phi_5(\e) = \frac{1}{1-\cos \e}.
+\end{equation*}
+Arrange the terms of the sequence so that each term is of higher order than (\ie, is little `oh' compared to) the one preceding it, as $\e \to 0+.$  One strategy is to first find the order of each term in powers of $\e.$\\
+
+Solution:\\
+
+The solution is $O(\phi_5)<O(\phi_3)<O(\phi_4)<O(\phi_2)<O(\phi_1)$.
+We begin by finding $\lim_{\e\to 0}\phi_i$.
+$$\lim_{\e\to 0}\phi_1=0\;\;\lim_{\e\to 0}\phi_2=0\;\;\lim_{\e\to 0}\phi_3=\infty$$
+$$\lim_{\e\to 0}\phi_4=1\;\; \lim_{\e\to 0}\phi_5=\infty$$
+
+Thus immediately we see that
+$$\phi_4=o(\phi_3)\;\text{ and }\phi_4=o(\phi_5)$$
+$$\phi_1=o(\phi_4)\;\text{ and }\phi_2=o(\phi_4).$$
+Then we already have the ordering
+$$O(\phi_5),O(\phi_3)<O(\phi_4)<O(\phi_2),O(\phi_1),$$
+and require only two calculations.
+The first:
+$$\lim_{\e\to 0}\frac{\phi_1}{\phi_2}=\lim_{\e\to 0}\frac{\ln(1+2\e^2)}{\arcsin(\e)}=\lim_{\e\to 0}\frac{4\e}{1+2\e^2}\sqrt{1-\e^2}=0$$
+Therefore $\phi_1=o(\phi_2)$. \\
+Now we check the second relationship:
+$$\lim_{\e\to 0}\frac{\phi_3}{\phi_5}=\lim_{\e\to 0}\frac{\frac{\sqrt{1+\e}}{\sin(\e)}}{1-\cos(\e)}=0$$
+Hence $\phi_3=o(\phi_5)$ and the ordering listed above holds.
+\eenum
+\end{document} 

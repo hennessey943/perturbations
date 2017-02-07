@@ -1,0 +1,171 @@
+\input{def}
+
+\newcommand{\Ai}{{\rm Ai}}
+\newcommand{\Bi}{{\rm Bi}}
+\pagestyle{empty}
+\begin{document}
+
+\begin{center}
+\large{ MATH-6620 \hspace{1in}  PERTURBATION METHODS \hspace{1in}SPRING 2016\\ Homework-6 (OPTIONAL) \\ Assigned Thursday May 5, 2016 \\ Due Monday May 16, 2016.}\end{center}
+
+\bigskip
+\n\ul{Michael Hennessey}
+
+
+\bc {\bf PROBLEMS} \ec
+
+\benum
+
+\item Consider the equation
+$$y''+\l^2(x^2-1)y=0,\qquad 0\le x\le 2,$$
+as $\l \to \infty$ with $y(0)=0,$ $y'(0)=1.$  First obtain
+asymptotic forms for $y(x,\l)$ for $x$ not near the transition
+point $x=1.$  Then find the appropriate transition solution, and
+hence a leading-order uniformly valid asymptotic solution to the
+problem, carefully noting the connection between the three
+parts of the solution.\\
+
+Solution:\\
+
+We begin by transforming the equation to move the turning point to 0 by letting $\xi=1-x$, and $y(x;\lambda)=u(\xi,\lambda)$. Then the ODE becomes
+$$u''=\lambda^2(2\xi-\xi^2)u\;\;-1\leq \xi\leq 1$$
+as $\lambda\to\infty$, with $u(1)=0$ and $u'(1)=-1.$ We then make the standard transformation
+$$u(\xi;\lambda)=\phi(\xi)e^{\lambda\o(\xi)}$$
+to transform the ODE into
+$$\phi''+2\lambda\o'\phi'+\lambda\o''\phi+\lambda^2\o'^2\phi=\lambda^2(2\xi-\xi^2)\phi.$$
+We match the powers of $\lambda$ to find
+$$\lambda^2:\;\; \o'^2=2\xi-\xi^2\;\implies\; \o=\pm\int\sqrt{2\xi-\xi^2}d\xi.$$
+$$\lambda^1:\;\; 2\o'\phi'+\o''\phi=0\;\implies\;\phi=(2\xi-\xi^2)^{-1/4}.$$
+Then the leading order asymptotic form of the outer solution is
+$$u\sim \left\{\begin{array}{cc}|2\xi-\xi^2|^{-1/4}\left[c_1\cos\left(\lambda\int_\xi^0|2s-s^2|^{1/2}ds\right)+c_2\sin\left(\lambda\int_\xi^0|2s-s^2|^{1/2}ds\right)\right],&-1\leq\xi<0\\ \\
+(2\xi-\xi^2)^{-1/4}\left[b_1e^{\lambda\int_0^\xi\sqrt{2s-s^2}ds}+b_2e^{-\lambda\int_0^\xi\sqrt{2s-s^2}ds}\right],&0<\xi\leq 1\end{array}\right..$$
+\indent We now determine the solution in the layer at $\xi=0.$ We let $\xi=\lambda^{-p}\zeta$, $(2\xi-\xi^2)\sim2\xi\sim2\lambda^{-p}\zeta$, and $w(\zeta;\lambda)=u(\xi;\lambda).$ Then the ODE becomes
+$$w''\lambda^{2p}=2\lambda^{2-p}\zeta w,\;\;-\infty<\zeta<\infty.$$
+To match the powers of $\lambda$ on each side of the equation, we take
+$$2p=2-p\implies p=\frac{2}{3}.$$
+Then we have a near-Airy equation
+$$w''=2\zeta w.$$
+Here we approximate $w(\zeta;\lambda)\sim\mu_0(\lambda)w_0(\zeta).$ Note this does not change the equation above.
+If we take $\eta=B\zeta,$ and $v_0(\eta)=w_0(\zeta)$, we get a new ODE:
+$$B^2v_0''=\frac{2\eta}{B}v_0.$$
+Then to transform to the Airy equation, we want
+$$\frac{2}{B^3}=1\;\implies\;B=2^{1/3}.$$
+Thus we have the Airy equation in $v_0(\eta)$ with solution
+$$v_0=a_1\Ai(\eta)+a_2\Bi(\eta).$$
+We can transform back to $w$ easily:
+$$w\sim\mu_0(\lambda)[a_1\Ai(2^{1/3}\zeta)+a_2\Bi(2^{1/3}\zeta)].$$
+Now we inspect the asymptotic behavior of the inner and outer solutions in an attempt to match across the turning point. For the inner solution, the asymptotics are known:
+$$w\sim\left\{\begin{array}{cc}\mu_0(\lambda)\frac{1}{2^{7/12}\pi^{1/2}|\zeta|^{1/4}}\left[(a_1-a_2)\sin\left(\frac{2\sqrt{2}}{3}|\zeta|^{3/2}\right)+(a_1+a_2)\cos\left(\frac{2\sqrt{2}}{3}|\zeta|^{3/2}\right)\right],&\zeta\to-\infty\\ \\
+\mu_0(\lambda)\frac{1}{2^{1/12}\pi^{1/2}\zeta^{1/4}}\left[\frac{a_1}{2}e^{-2\sqrt{2}\zeta^{3/2}/3}+a_2e^{2\sqrt{2}\zeta^{3/2}/3}\right],&\zeta\to\infty\end{array}\right..$$
+To look at the outer solution we first make a few approximations. We begin by letting $\xi=\lambda^{-2/3}\zeta.$ Then we approximate $2\xi-\xi^2\sim2\xi\sim2\lambda^{-2/3}\zeta.$ We then take
+$$(2\xi-\xi^2)^{-1/4}\sim2^{-1/4}\lambda^{1/6}\zeta^{-1/4},$$
+$$\int_\xi^0|2s-s^2|^{1/2}ds\sim\int_{\lambda^{-2/3}\zeta}^0|2s|^{1/2}ds=-\frac{2\sqrt{2}}{3}\lambda^{-1}|\zeta|^{3/2},$$
+$$\int_0^\xi\sqrt{2s-s^2}ds\sim\int_0^{\lambda^{-2/3}\zeta}\sqrt{2s}ds=\frac{2\sqrt{2}}{3}\lambda^{-1}\zeta^{3/2}.$$
+Hence the asymptotic behavior of the outer solution is:
+$$u\sim\left\{\begin{array}{cc}\frac{\lambda^{1/6}}{2^{1/4}|\zeta|^{1/4}}\left[c_1\cos\left(\frac{2\sqrt{2}}{3}|\zeta|^{3/2}\right)-c_2\sin\left(\frac{2\sqrt{2}}{3}|\zeta|^{3/2}\right)\right],&\zeta\to-\infty\\ \\
+\frac{\lambda^{1/6}}{2^{1/4}\zeta^{1/4}}\left[b_1e^{2\sqrt{2}\zeta^{3/2}/3}+b_2e^{-2\sqrt{2}\zeta^{3/2}/3}\right],&\zeta\to\infty\end{array}\right..$$
+Matching the solutions as $\zeta\to-\infty$ gives
+$$\mu_0(\lambda)=2^{1/3}\lambda^{1/6}\pi^{1/2},\;\;\text{ and }\;c_2=a_2-a_1,\;c_1=a_1+a_2.$$
+Then using these values, we find from the matching on the other side
+$$b_2=\frac{a_1}{\sqrt{2}},\;b_1=\sqrt{2}a_2.$$
+We can then express all coefficients in terms of the $b_i$ as
+$$c_1=\sqrt{2}b_2+\frac{b_1}{\sqrt{2}},\;c_2=\frac{b_1}{\sqrt{2}}-\sqrt{2}b_2.$$
+We now apply the boundary conditions at $\xi=1$ to determine the $b_i$'s.
+$$u(1)\sim b_1+b_2=0\implies b_1=-b_2.$$
+$$u'(1)\sim 2b_1\lambda=-1\implies b_1=-\frac{1}{2\lambda}.$$
+Then the coefficients are
+$$b_2=\frac{1}{2\lambda},\;a_1=\frac{\sqrt{2}}{2\lambda},\;a_2=-\frac{\sqrt{2}}{4\lambda},\;c_1=\frac{\sqrt{2}}{4\lambda},\;c_2=-\frac{3\sqrt{2}}{4\lambda}.$$
+We can then write our leading-order asymptotic solution as an outer solution
+$$u\sim\left\{\begin{array}{cc}|2\xi-\xi^2|^{-1/4}\left[\frac{\sqrt{2}}{4\lambda}\cos\left(\lambda\int_\xi^0|2s-s^2|^{1/2}ds\right)-\frac{3\sqrt{2}}{4\lambda}\sin\left(\lambda\int_\xi^0|2s-s^2|^{1/2}ds\right)\right],&-1\leq\xi<0\\ \\ (2\xi-\xi^2)^{-1/4}\left[-\frac{1}{2\lambda}e^{\lambda\int_0^\xi\sqrt{2s-s^2}ds}+\frac{1}{2\lambda}e^{-\lambda\int_0^\xi\sqrt{2s-s^2}ds}\right],&0<\xi\leq 1\end{array}\right.,$$
+and an inner solution
+$$u\sim 2^{1/3}\lambda^{1/6}\pi^{1/2}\left[\frac{\sqrt{2}}{2\lambda}\Ai(2^{1/3}\lambda^{2/3}\xi)-\frac{\sqrt{2}}{4\lambda}\Bi(2^{1/3}\lambda^{2/3}\xi)\right],$$
+where $\xi$ is in a neighborhood of $0$. We then transform back to the original variable:
+$$y\sim\left\{\begin{array}{cc}|1-x^2|^{-1/4}\frac{\sqrt{2}}{4\lambda}\left[\cos\left(\lambda\int_1^x|1-s^2|ds\right)-3\sin\left(\lambda\int_1^x|1-s^2|ds\right)\right],&1<x\leq2\\ \\
+(1-x^2)^{-1/4}\frac{1}{2\lambda}\left[e^{-\lambda\int_x^1\sqrt{1-s^2}ds}-e^{\lambda\int_x^1\sqrt{1-s^2}ds}\right],&0\leq x<1\end{array}\right.$$
+for the outer solution, and
+$$y\sim2^{1/3}\lambda^{1/6}\pi^{1/2}\frac{\sqrt{2}}{2\lambda}\left[\Ai(2^{1/3}\lambda^{2/3}(1-x))-\frac{1}{2}\Bi(2^{1/3}\lambda^{2/3}(1-x))\right],$$
+where $x$ is in a neighborhood of 1.
+
+
+\item The Schr\" odinger equation describing the quantum mechanics of a particle in a potential field $V$ has the form
+\begin{equation*}
+y''(x) + [E-V(x)]y = 0, \;\; y(\pm \infty) = 0.
+\end{equation*}
+Take $V(x) = x^4.$  Then $x = \pm E^{1/4}$ are the two turning points.  Find an appropriate expression for the eigenvalues (energy levels) $E_n$ as $n \to \infty,$ for which a nontrivial solution exists.
+
+
+Solution:\\
+
+We let $x=E^{1/4}\xi,$ and $u(\xi;\lambda)=y(x;\lambda).$ With $V(x)=x^4$, we get the differential equation for $u$:
+$$u''+E^{3/2}[1-\xi^4]u=0$$
+We then use the WKBJ ansatz, with $\lambda=E^{3/4}$, $u=\phi(\xi)e^{\lambda\o(\xi)},$ to get the differential equation
+$$\phi''+\lambda(2\o'\phi'+\o''\phi)+\lambda^2(\o'^2+1-\xi^4)\phi=0.$$
+If we look at the powers of $\lambda$ we can solve for $\o$ and $\phi$:
+$$\lambda^2:\;\; \o'^2=\xi^4-1\implies \o=\pm\int\sqrt{\xi^4-1}d\xi,$$
+$$\lambda^1:\;\; 2\o'\phi'+\o''\phi=0\implies \phi=(\xi^4-1)^{-1/4}.$$
+Then $u$ has the general form
+$$u=(\xi^4-1)^{-1/4}e^{\pm\lambda\int\sqrt{\xi^4-1}d\xi}.$$
+In the region between the two transition points at $\xi=\pm 1$, we argue that our outer solution will have the form
+$$u=(1-\xi^4)^{-1/4}\sin\left(\lambda\int\sqrt{1-\xi^4}d\xi+\frac{\pi}{4}\right),$$
+as matching in the layer at the turning points will be done with the first Airy function $\Ai$. Then, if we enter the region through the left transition point, $\xi=-1$, we see
+$$u=\frac{C}{(1-\xi^4)^{1/4}}\sin\left(\lambda\int_{-1}^\xi\sqrt{1-s^4}ds+\frac{\pi}{4}\right).$$
+And if we enter through the right at $\xi=1$, we see
+$$u=\frac{D}{(1-\xi^4)^{1/4}}\sin\left(\lambda\int_{\xi}^1\sqrt{1-s^4}ds+\frac{\pi}{4}\right).$$
+We rewrite this equation as
+$$u=\frac{D}{(1-\xi^4)^{1/4}}\sin\left(\lambda\int_{-1}^1\sqrt{1-s^4}ds+\frac{\pi}{2}-\lambda\int_{\xi}^1\sqrt{1-s^4}ds-\frac{\pi}{4}\right).$$
+If we let
+$$\theta=\lambda\int_{\xi}^1\sqrt{1-s^4}ds+\frac{\pi}{4},\;Q=\lambda\int_{-1}^1\sqrt{1-s^4}ds+\frac{\pi}{2},$$
+then for the solution in the region between the transition points to be equivalent, we enforce
+$$C\sin\theta=D\sin(Q-\theta)=-D\sin(\theta-Q).$$
+This only occurs when $Q=n\pi$ and $D=(-1)^n C.$ Thus we have
+$$\lambda\int_{-1}^1\sqrt{1-s^4}ds+\frac{\pi}{2}=n\pi.$$
+Therefore,
+$$E_n=\left(\frac{\pi(n-\frac{1}{2})}{\int_{-1}^1\sqrt{1-s^4}ds}\right)^{4/3}.$$
+
+
+\item Consider the homogeneous ODE
+\begin{equation*}
+y''(x) - \frac{x}{(x+1)^4} y(x) = 0.
+\end{equation*}
+Find the first three terms of the asymptotic expansion of each of the two linearly independent solutions for large $x.$\\
+
+Solution:\\
+
+Since our equation is of the form
+$$y''+r(x)y=0,$$
+we can make the substitution $y=e^{\phi(x)},$ to get the equation
+$$\phi''+\phi'^2=\frac{x}{(x+1)^4}.$$
+We can approximate this equation by Taylor expanding the term on the right hand side of the equation
+$$\phi''+\phi'^2\sim \frac{1}{x^3}-\frac{4}{x^4}+\frac{10}{x^5}.$$
+Then, since the leading order term is of the form $x^{-\alpha}$, where $\alpha>2$, we take $\phi\sim\phi_0$ to get
+$$\phi_0''\sim\frac{1}{x^3}\implies \phi_0=\frac{1}{2x}+\phi_1.$$
+If we substitute this into the ODE for $\phi$, we find
+$$\left[\frac{1}{x^3}+\phi_1''\right]+\left(-\frac{1}{2x^2}+\phi_1'\right)^2=\frac{1}{x^3}-\frac{4}{x^4}+\frac{10}{x^5}.$$
+Then, expanding the square on the left hand side of the equation and combining the $x^{-4}$ terms, we see
+$$\phi_1''\sim-\frac{17}{4x^4}\implies \phi_1=-\frac{17}{24x^2}.$$
+Thus our first solution for $y$ has the asymptotic expansion
+$$y\sim e^{1/2x}\left[1-\frac{17}{24x^2}+\frac{289}{1152x^4}+...\right].$$
+To find the second solution, we try letting $\phi_0=A\ln x.$ Then, substituting this into our ODE for $\phi$, we have
+$$-\frac{A}{x^2}+\frac{A^2}{x^2}=\frac{1}{x^3}-\frac{4}{x^4}+\frac{10}{x^5}.$$
+Since there are no $x^{-2}$ terms on the right side of the equation, we enforce
+$$A^2-A=0\;\implies\; A=0,1.$$
+We note that the first solution for $y$ corresponds to the 0 solution here. We take, then, $\phi=\ln(x)+\phi_1.$ Thus our ODE becomes
+$$\left[-\frac{1}{x^2}+\phi_1''\right]+\left[\frac{1}{x}+\phi_1'\right]^2=\frac{1}{x^3}-\frac{4}{x^4}+\frac{10}{x^5}.$$
+If we make a leading-order approximation for $\phi_1$, we have
+$$\phi_1''+\frac{2}{x}\phi_1'\sim\frac{1}{x^3}.$$
+Then $\phi_1=-\frac{1}{x}-\frac{\ln{x}}{x}.$
+We write
+$$\phi=\ln(x)-\frac{1}{x}-\frac{\ln(x)}{x}\;\implies\; y\sim x^{1-1/x}\left[1-\frac{1}{x}+\frac{1}{2x^2}+...\right].$$
+
+
+
+
+
+
+
+
+\eenum
+
+
+
+\enddocument} 

@@ -1,0 +1,146 @@
+\input{def}
+\pagestyle{empty}
+\begin{document}
+
+\begin{center}
+\large{ MATH-6620 \hspace{1in}  PERTURBATION METHODS \hspace{1in}SPRING 2016\\ Test 2 \\ Due Wednesday May 3, 2016.}\end{center}
+
+Name: Michael Hennessey\\
+\textbf{I have abided by the ground rules of this test}
+
+\bigskip
+\bc {\bf PROBLEMS} \ec
+
+\benum
+
+\item An oscillation is described by the pair of equations
+$$\frac{du}{dt}+v=-\e u,$$
+$$\frac{dv}{dt}-u=-\e v^3,\;\;t\geq 0,$$
+with initial conditions $u(0)=1,$ $v(0)=0.$ We introduce a fast time scale $T=(1+\e^2\omega_2+...)t$ and a slow scale $\tau=\e t$. Then, but letting $u(t;\e)=u(T,\tau;\e)$ and $v(t;\e)=v(T,\tau;\e)$, the equations then become
+$$(1+\e^2\o_2)u_T+\e u_\tau+v=-\e u$$
+$$(1+\e^2\o_2)v_T+\e v_\tau-u=-\e v^3,$$
+with initial conditions $u(0,0)=1,$ $v(0,0)=0.$ Now we look for asymptotic solutions by allowing
+$u(T,\tau;\e)\sim u_0(T,\tau)+\e u_1(T,\tau)+\e^2 v_2(T,\tau)$ and $v(T,\tau;\e)\sim v_0(T,\tau)+\e v_1(T,\tau)+\e^2 v_2(T,\tau),$ and grouping the resulting terms in powers of $\e$:
+$$u_{0T}+v_0+\e[u_{1T}+u_{0\tau}+v_1+u_0]+\e^2[u_{2T}+u_{1\tau}+\o_2u_{0T}+v_2+u_1]=0$$
+$$v_{0T}-u_0+\e[v_{1T}+v_{0\tau}-u_1+v_0^3]+\e^2[v_{2T}+v_{1\tau}+\o_2v_{0T}-u_2+3v_0^2v_1]=0.$$
+The initial conditions here are $u_0(0,0)=1,$ $u_1(0,0)=u_2(0,0)=v_0(0,0)=v_1(0,0)=v_2(0,0)=0.$ We now inspect the leading order equation
+$$\e^0:\;\; u_{0T}+v_0=0$$
+$$v_{0T}-u_0=0.$$
+By setting $u_0=v_{0T}$ and combining the equations, we get the second order equation
+$$v_{0TT}+v_{0T}=0,$$
+with solutions
+$$v_0=f_0(\tau)\sin(T+\phi(\tau)),\;\;u_0=f_0(\tau)\cos(T+\phi(\tau)).$$
+Applying the initial conditions, we find that $\phi(0)=0$, and $f_0(0)=1.$ We now look at the $O(\e)$ equation to determine the amplitude and phase shift functions and, subsequently, $u_1$ and $v_1.$
+$$\e^1:\;\; u_{1T}+u_{0\tau}+v_1+u_0=0$$
+$$v_{1T}+v_{0\tau}-u_1+v_0^3=0,$$
+with initial conditions as above.
+If we let $u_1=v_{1T}+v_{0\tau}+v_0^3,$ we combine the equations to get
+$$v_{1TT}+v_1=-[2u_{0\tau}+u_0+3v_0^2u_0].$$
+Expanding out the right hand side of the equation leads to the differential equations for the amplitude and phase shift of $u_0$:
+$$\phi'=0\implies \phi=0.$$
+$$4f_0+3f_0^3+8f_0'=0\implies f_0=\frac{2}{\sqrt{7e^\tau-3}}.$$
+Then the $O(\e)$ equation reduces to
+$$v_{1TT}+v_1=\frac{6\cos(3T)}{(7e^\tau-3)^{3/2}}.$$
+This equation has the solution
+$$v_1=f_1(\tau)\cos(T)+g_1(\tau)\sin(T)-\frac{3(2\cos(T)+\cos(3T))}{4(7e^\tau-3)^{3/2}}.$$
+Then,
+$$u_1=-f_1(\tau)\sin(T)+g_1(\tau)\cos(T)+\frac{(30-28e^\tau)\sin(T)-\sin(3T)}{4(7e^\tau-3)^{3/2}}.$$
+Applying initial conditions tells us $g_1(0)=0$, and $f_1(0)=9/32.$ To determine $g_1,$ $f_1$, and $\o_2$, we now look at the $O(\e^2)$ equation:
+$$\e^2:\;\; u_{2T}+u_{1\tau}+\o_2u_{0T}+v_2+u_1=0$$
+$$v_{2T}+v_{1\tau}+\o_2v_{0T}-u_2+3v_0^2v_1=0.$$
+Now substituting with $u_2=v_{2T}+v_{1\tau}+\o_2v_{0T}+3v_0^2v_1$, we combine the equations to get
+$$v_{2TT}+v_{2}=-v_{1T\tau}-\o_2v_{0TT}-6v_0v_{0T}v_1-3v_0^2v_{1T}-u_{1\tau}-\o_2u{0T}-u_1.$$
+The coefficients of the secular terms that result on the right hand side of the above equation must be set to zero, thus we have two more differential equations:
+$$\cos(T):-1512 e^{\tau }g_1'(\tau )+3528 e^{2 \tau } g_1'(\tau )-2744 e^{3 \tau } g_1'(\tau )+216g_1'(\tau )-4 \left(7 e^{\tau }+6\right) \left(7 e^{\tau }-3\right)^2 g_1(\tau )=0  $$
+$$\sin(T): 1512 \exp (\tau ) f_1'(\tau )-3528 \exp (2 \tau ) f_1'(\tau )+2744 \exp (3 \tau ) f_1'(\tau )+28 \exp (\tau ) (7 \exp (\tau )-3)^2 f_1(\tau )$$
+$$-672 \omega_2  \exp (\tau ) \sqrt{7 \exp (\tau )-3}+144 \omega_2  \sqrt{7 \exp (\tau )-3}-784 \omega_2  \exp (2 \tau ) \sqrt{7 \exp (\tau )-3}+98 \exp (2 \tau ) \sqrt{7 \exp (\tau )-3}$$
+$$+81 \sqrt{7 \exp (\tau )-3}-216 f_1'(\tau )=0 $$
+The solution of the first, is $g_1=0$, with the boundary conditions applied. The second equations solution is difficult, but we can see that it does have a solution. Instead of solving the equation, since we only want a condition on $\o_2$, we look at the two inhomogeneous $e^{2\tau}$ terms. If $\o_2=1/8$, these terms vanish, which eliminates the possibility that the amplitude of the second order term grows exponentially (and thus can become disordered as $\tau\to\infty$.) Thus the leading order solutions are
+$$u\sim \frac{2}{\sqrt{7e^{\e t}}}\cos((1+\e^2/8)t)$$
+$$v\sim \frac{2}{\sqrt{7e^{\e t}}}\sin((1+\e^2/8)t).$$
+If one wishes to compute the next term, all that must be done is solve the $f_1(\tau)$ differential equation.
+\item Here we model a child's swing by treating it as a pendulum which changes its length by a small amount in a periodic manner. The relevant ODE is
+    $$\frac{d^2 u}{dt^2}+\left(\frac{2\e \o\cos(\o t)}{1+\e\sin(\o t)}\right)\frac{du}{dt}+u=0.$$
+    By using the fast scale $T=t$ and slow scale $\tau=\e t$, we look for a multi-scale expansion $u\sim u_0+\e u_1$. We then have the PDE
+    $$(u_{TT}+2\e u_{T\tau}+\e^2u_{\tau\tau})(1+\e\sin(\o T))+2\e\o\cos(\o T)(u_T+\e u_\tau)+u=0.$$
+    If we look at the $O(1)$ equation that results from the multi-scale expansion, we get
+    $$\e^0:\;\; u_{0TT}+u_0=0$$
+    with solution
+    $$u_0=f_0(\tau)\cos(T)+g_0(\tau)\sin(T).$$
+    We then inspect the $O(\e)$ equation to determine $f_0$ and $\phi_0$:
+    $$\e^1:\;\; u_{1TT}+u_1=-(2u_{0T\tau}-2\o\cos(\o T)u_{0T}-\sin(\o T)u_{0TT}.$$
+    The right hand side of the above equation can be expressed as
+    $$\frac{1}{2} \left(4 \sin (T) f_0'(\tau )-2 \omega  f_0(\tau ) \sin (T \omega +T)-f_0(\tau ) \sin (T \omega +T)-2 \omega  f_0(\tau ) \sin (T-T \omega )+f_0(\tau ) \sin (T-T \omega )\right.$$
+    $$\left.-4 \cos (T) g_0'(\tau )+2 \omega  g_0(\tau ) \cos (T \omega +T)+g_0(\tau ) \cos (T \omega +T)-g_0(\tau ) \cos (T-T \omega )+2 \omega  g_0(\tau ) \cos (T-T \omega )\right).$$
+    Clearly, removal of secularity demands that
+    $$g_0'(\tau)=0\implies g_0=constant.$$
+    $$f_0'(\tau)=0\implies f_0=constant.$$
+    Then, to find $u_1$, we must solve
+    $$u_{1TT}+u_1=\frac{1}{2} \left(-f_0(2\o+1)\sin(T+\o T)+f_0(1-2\o)\sin(T-\o T)\right.$$
+    $$\left.+g_0(2\o+1)\cos(T+\o T)+g_0(2\o-1)\cos(T-\o T)\right)$$
+    Fortunately, this equation has a simple solution,
+    $$u_1=f_1(\tau)\cos(T)+g_1(\tau)\sin(T)+\frac{g_0(1-2\o)}{2\o(\o-2)}\cos(T-\o T)-\frac{g_0(1+2\o)}{2\o(\o+2)}\cos(T+\o T)$$
+    $$+\frac{f_0(2\o-1)}{2\o(\o-2)}\sin(T-\o T)+\frac{f_0(1+2\o)}{2\o(\o+2)}\sin(T+\o T).$$
+    Now we look at the reduced $O(\e^2)$ equation (as all $\tau$ derivatives of $u_0$ are 0,):
+    $$u_{2TT}+u_2+2u_{1T\tau}+u_{1TT}\sin(\o T)+2\o u_{1T}\cos(\o T)=0.$$
+    The secular terms that arise result in the differential equations
+    $$f_1'=\frac{3g_0\o(\o^2-1)}{4\o(4-\o^2)},$$
+    $$g_1'=\frac{3f_0\o(\o^2-1)}{4\o(\o^2-4)}.$$
+    These equations have obvious solutions
+    $$f_1=\frac{3g_0\o(\o^2-1)}{4\o(4-\o^2)}\tau,$$
+    $$g_1=\frac{3f_0\o(\o^2-1)}{4\o(\o^2-4)}\tau.$$
+    \pagebreak
+    We then write our multi-scale approximation
+    $$u_0+\e u_1=f_0\cos(T)+g_0\sin(T)+\e\left(\frac{3g_0(\o^2-1)}{4(4-\o^2)}\tau\cos(T)+\frac{3f_0(\o^2-1)}{4(\o^2-4)}\tau\sin(T)\right.$$
+    $$\left.+\frac{g_0(1-2\o)}{2\o(\o-2)}\cos(T-\o T)-\frac{g_0(1+2\o)}{2\o(\o+2)}\cos(T+\o T) +\frac{f_0(2\o-1)}{2\o(\o-2)}\sin(T-\o T)+\frac{f_0(1+2\o)}{2\o(\o+2)}\sin(T+\o T)\right).$$
+    We can then see that amplitude growth can result from the linear growth of $\tau$ in the $u_1$ term. This growth becomes $O(1)$ when $t=O(\e^{-2}),$ for any choice of $\o$. However, some amplitude growth can result from the other terms of $u_1$ when $|\o|<\e f_0/4.$ We can see this more clearly, when we look at the coefficients on the last line of the multi-scale approximation. Each of these coefficients is approximately equal to
+    $$\pm\frac{\e f_0}{4\o}.$$
+    If we want amplitude to grow in $O(1)$, we let
+    $$\pm\frac{\e f_0}{4\o}>1\implies |\o|<\frac{\e f_0}{4}.$$
+    If we want to be more exact, we can solve the coefficients for $\e$ without assuming $(\o-2)\sim - 2 $ and $(1-2\o)\sim 1$. Solving one of these coefficients gives
+    $$\o=\frac{2\e-4\pm\sqrt{(2\e-4)^2+8\e}}{4}.$$
+
+\item Here we determine a first-term approximation to the solution of a wave equation with slowly-varying phase speed
+    $$u_{tt}=c^2(\e t)u_{xx},\;\;|x|<\infty,\; t>0.$$
+    We begin by taking the naive approach and letting $\tau=\e t$, $u(x,t;\e)=u(x,t,\tau;\e)$. Then we get
+    $$u_{tt}+2\e u_{t\tau}+\e^2 u_{\tau\tau}=c^2(\tau)u_{xx}.$$
+    We then apply the standard expansion to $u(x,t,\tau;\e)\sim u_0(x,t,\tau)+\e u_1(x,t,\tau)+...$
+    If we look at specifically the resultant $O(\e)$ equation, we have
+    $$u_{0tt}=c^2(\tau)u_{0xx},$$
+    which can be solved using the method of separation of variables, by letting $u_0(x,t,\tau)=T(t,\tau)X(x).$ In an effort to increase clarity, we only consider only a single term of the resulting solution, set $\lambda=1$, and state that the following efforts of removing singularities will hold for every term in the series solution. The solution, then for $u_0$ is
+    $$u_0=a_0(\tau)\cos[x-c(\tau)t]+a_1(\tau)\cos[x+c(\tau)t]+b_0(\tau)\sin[x-c(\tau)t]+b_1(\tau)\sin[x+c(\tau)t].$$
+ We then note that secularities may only arise in the $O(\e)$ equation from the term $2u_{0t\tau}.$ When we expand out this term, and attempt to remove the singularities, we find 2 identical systems of 2 differential equations,:
+ $$c(\tau)a_0'+a_0c'(\tau)-ta_1c(\tau)c'(\tau)=0$$
+ $$c(\tau)a_1'+a_1c'(\tau)-ta_0c(\tau)c'(\tau)=0.$$
+ $$c(\tau)b_0'+b_0c'(\tau)-tb_1c(\tau)c'(\tau)=0$$
+ $$c(\tau)b_1'+b_1c'(\tau)-tb_0c(\tau)c'(\tau)=0.$$
+ Clearly then, the solutions are the same for each set of equations, though they may differ by some multiplicative constant:
+ $$a_0,b_1=\frac{c_1\cos[c(\tau)t]+c_2\sin[c(\tau)t]}{c(\tau)}.$$
+ $$a_1,b_0=\frac{c_1\cos[c(\tau)t]-c_2\sin[c(\tau)t]}{c(\tau)}.$$
+ Then substituting these into the solution $u_0$, we get a solution independent of time that does not satisfy the $O(1)$ equation. Thus we should assume our fast-time scale must also change (we suspect that $\tau=\e t$ is a good slow time scale as it appears explicitly in the governing equation.) We let $f(t,\e)=T$ be the fast time scale, $u(x,t)=u(x,T,\tau)$ and derive a new multi-scale equation:
+  $$f_t^2u_{TT}+f_{tt}u_T+2\e f_t u_{T\tau}+\e^2u_{\tau\tau}=c^2(\tau)u_{xx}.$$
+  For the solution to be wavelike, we assume balance occurs between the first term on the left hand side and the term on the right hand side:
+  $$f_t^2u_{TT}\sim c^2(\tau)u_xx\implies f_t=c(\tau)\implies f=\int_0^t c(\e s)ds.$$
+  Using this fast time scale leads to the multi-scale equation
+  $$c^2(\tau)u_{TT}+\e c'(\tau)u_T+2\e c(\tau) u_{T\tau}+\e^2 u_{\tau\tau}=c^2(\tau)u_{xx}.$$
+  Now letting $u(x,T,\tau;\e)\sim u_0(x,T,\tau)+\e u_1(x,T,\tau)+...$, we can inspect the resulting equations in terms of powers of $\e.$ We first look at the leading order equation:
+  $$\e^0:\;\; u_{0TT}=u_{0xx}.$$
+  This equation has solutions:
+  $$u_0=a_0(\tau)\sin(T-x)+a_1\sin(T+x)+b_0(\tau)\cos(T-x)+b_1(\tau)\cos(T+x).$$
+  Now if we move to the $O(\e)$ equation, we find
+  $$u_{1TT}+\frac{c'(\tau)}{c^2(\tau)}u_{0T}+\frac{2}{c(\tau)}u_{0T\tau}=u_{1xx}.$$
+  Singularities may only result from
+  $$\frac{c'(\tau)}{c^2(\tau)}u_{0T}+\frac{2}{c(\tau)}u_{0T\tau}.$$
+  To remove these singularities, we get a system of 4 independent, identical equations:
+  $$2 c(\tau)a_0'+c'(\tau)a_0=0$$
+  $$2 c(\tau)a_1'+c'(\tau)a_1=0$$
+  $$2 c(\tau)b_0'+c'(\tau)b_0=0$$
+  $$2 c(\tau)b_1'+c'(\tau)b_1=0.$$
+  With solutions
+  $$a_0,a_1,b_0,b_1=\frac{1}{\sqrt{c(\tau)}}(\alpha_0,\alpha_1,\beta_0,\beta_1),\;\; \alpha_{0,1}\beta_{0,1}\in\mathbb{R}.$$
+  Then the first-term approximation valid for large $t$ is
+  $$u_0=\frac{\alpha_0}{\sqrt{c(\tau)}}\sin\left[\int_0^t c(\e s)ds-x\right]+ \frac{\alpha_1}{\sqrt{c(\tau)}}\sin\left[\int_0^t c(\e s)ds+x\right]$$
+  $$+\frac{\beta_0}{\sqrt{c(\tau)}}\cos\left[\int_0^t c(\e s)ds-x\right]+\frac{\beta_1}{\sqrt{c(\tau)}}\cos\left[\int_0^t c(\e s)ds+x\right].$$
+
+  \eenum
+  \end{document} 

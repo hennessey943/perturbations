@@ -1,0 +1,237 @@
+\input{def}
+\pagestyle{empty}
+\begin{document}
+
+\begin{center}
+\large{ MATH-6620 \hspace{1in}  PERTURBATION METHODS \hspace{1in}SPRING 2016\\ Homework-4 \\ Assigned Wednesday February 24, 2016 \\ Due Wednesday March 30, 2016}\end{center}
+
+\vspace{6 ex}
+
+{\bf Name: Michael Hennessey} \hfill
+
+\vspace{6 ex}
+
+\bc {\bf PROBLEMS} \ec
+
+\benum
+
+% problem 1
+\item Consider the signaling problem
+\begin{equation*}
+\e(u_{xx} - u_{tt}) = u_t + 2 u_x, \quad 0<x<\pi, \; t>0,
+\end{equation*}
+with auxiliary conditions
+\begin{equation*}
+u(x,0) = u_t(x,0) = 0, \;\; u(0,t) = -\sin t, \; u(\pi,t) = 0.
+\end{equation*}
+Construct a leading-order solution for $0 < \e \ll 1,$ paying due attention to the location of any layers.\\
+
+Solution:\\
+
+We begin by finding the outer solution of the PDE by letting $u(x,t;\e)\sim u_0(x,t)$ and collecting only the $O(1)$ terms. This gives the linear transport equation
+$$u_{0t}+2u_{0x}=0.$$
+This equation has characteristics
+$$\gamma=x-2t$$
+which implies the solution to the PDE is then
+$$u_0=A(\gamma)=A(x-2t).$$
+We now apply the auxiliary conditions to find a reasonable outer solution. Clearly, if we apply the boundary conditions at $t=0$, we get the zero solution. Similarly, we get the zero solution if we apply the condition at $x=\pi$. However, if we apply the boundary condition at $x=0$ we get an interesting solution.
+$$u_0(0,t)=A(-2t)=-\sin t\implies u_0(x,t)=\sin(\frac{x-2t}{2}).$$
+Thus if we let $u_0$ be a piecewise continuous function defined
+$$u_0(x,t)=\left\{\begin{array}{cc}0,&x\geq 2t\\ \sin(\frac{x-2t}{2}),&x<2t\end{array}\right.$$
+we satisfy every boundary condition but the one at $x=\pi$ and remove any possibility of a leading-order layer along $x=2t$. However, ince the line $x=\pi$ is transverse to the subcharacteristics of the equation,  we do find that there is an $\e$-thick layer at $x=\pi, t>\pi/2.$ Note we are only concerned with a layer at $t>\pi/2$ for the boundary condition at $x=\pi$ is only dissatisfied on the right side of the line $x=2t.$ Thus we let
+$$x=\pi+\e\xi,\;\;t=T+\frac{\pi}{2},\;T>0,\;\;u(x,t)=U(\xi,T).$$
+Then the original signalling problem becomes
+$$U_{0\xi\xi}=2U_{0\xi},\;\;U(0,T)=0$$
+in the layer. The inner solution is then
+$$U_0(\xi,T)=\frac{1}{2}B_0(T)(e^{2\xi}-1).$$
+We then match to the outer solution in this region. We let $\xi\to\infty$ in $U_0$ to find
+$$U_0(\xi,T)\to-\frac{1}{2}B_0(T),$$
+and let $x\to \pi$ in $u_0$ to find
+$$u_0(x,t)\to \sin(\frac{\pi-2t}{2}).$$
+Thus we express the outer solution in the inner variable and we find that
+$$u_0\to -\sin(T)=-\frac{1}{2}B_0(T)\implies B_0(T)=2\sin(T).$$
+Then the inner solution is
+$$U_0(x,t)=\cos(t)\left(1-e^{2(x-\pi)/\e}\right).$$
+To then write the composite solution, we first note that the common part found above
+$$-\sin(T)=\cos(t).$$
+Now we simply add the inner and outer solutions together and subtract off a $\cos(t)$ to find
+$$u_C(c,t)=\left\{\begin{array}{cc}0,&x\geq 2t\\ \sin\left(\frac{x-2t}{2}\right)-\cos(t)e^{2(x-\pi)/\e},&x<2t\end{array}\right..$$
+
+
+% Problem 2
+\item Consider the elliptic problem
+\begin{equation*}
+\e(u_{xx} + u_{yy}) + u_x + u_y + u = 0, \quad 0<x<1, \; 0<y<1,
+\end{equation*}
+with boundary conditions
+\begin{equation*}
+u(x,0) = 0, \; u(x,1) = 1-x, \;\; u(0,y) = e^{-y}, \; u(1,y) = 1-y.
+\end{equation*}
+\benum
+\item Construct a leading-order solution for $0 < \e \ll 1,$ paying due attention to the location of the layers.
+
+\item Repeat the problem if the second boundary condition above is changed to $u(x,1) = 1.$
+
+\eenum
+Solution:\\
+
+\benum
+\item We first determine the subcharacteristic of the PDE by looking at the outer $O(1)$ equation
+$$u_x+u_y+u=0\implies y=x+\gamma\implies u=A(\gamma)e^{-x}=A(y-x)e^{-x}.$$
+We then satisfy the boundary conditions on the right and upper boundaries to get the outer solution
+$$u_0(x,t)=\left\{\begin{array}{cc}(y-x)e^{1-y},&x<y\\(x-y)e^{1-x},&y<x\end{array}\right.$$
+We choose to satisfy these boundary conditions (and therefore get backward flowing characteristics) because this outer solution is continuous along $x=y$ suggesting that there is no leading-order layer at $x=y.$ This outer solution does lead us to beleive that there are $O(\e)$ thick layers at $x=0$ and $y=0.$ Thus we derive and solve the inner PDEs:
+\benum
+\item We let $x=\e\xi,$ and $u(x,y;\e)=U(\xi,y;\e).$ Collecting the $O(1)$ terms and letting $U(\xi,y;\e)\sim U_0(\xi,y)$ gives the PDE
+$$U_{0\xi\xi}=-U_{0\xi},$$
+with solution
+$$U_0(\xi,y)=-A_0(y)e^{-\xi}+B_0(y).$$
+Since we must satisfy $u(0,y)=e^{-y}$ we have
+$$U_0(0,y)=-A_0(y)+B_0(y)=e^{-y}\implies B_0=A_0(y)+e^{-y}$$
+giving us the inner solution
+$$U_0(\xi,y)=A_0(y)(1-e^{-\xi})+e^{-y}.$$
+To determine $A_0(y)$ we must match the inner and outer solutions in the layer. We let $\xi\to\infty$ and $x\to 0$ in the inner and outer solutions respectively to find
+$$U_0(\xi,y)\to A_0(y)+e^{-y}\;\;u_0(x,y)\to ye^{1-y}.$$
+Hence we determine that
+$$A_0(y)=ye^{1-y}-e^{-y}\;\implies\;U_0(x,y)=ye^{1-y}-ye^{1-y-x/\e}+e^{-y-x/\e}.$$
+We now form the left composite solution:
+$$u_{CL}=(y-x)e^{1-y}-ye^{1-y-x/\e}+e^{-y-x/\e}.$$
+
+\item Now we determine the equation in the layer at $y=0.$ We let $y=\e\eta$, and $u(x,y;\e)=v(x,\eta;\e)$ and find that the leading order equation in the layer is
+    $$v_{0\eta\eta}=-v_{0\eta},\;\;v_0(x,0)=0.$$
+    This equation has solution
+    $$v_0(x,\eta)=C_0(x)(1-e^{-\eta}).$$
+    We then match to determine $C_0(x).$ We let $\eta\to\infty$ in the inner solution and $y\to 0$ in the outer solution to find
+    $$v_0\to C_0(x),\;\;u_0\to xe^{1-x}.$$
+    Thus we have
+    $$C_0(x)=xe^{1-x}.$$
+    The inner solution can then be written
+    $$v_0(x,y)=xe^{1-x}(1-e^{-y/\e}).$$
+    We then form the composite solution on the right of the center characteristic line
+    $$u_{CR}=(x-y)e^{1-x}-xe^{1-x-y/\e}.$$
+    Note that we do see a transcendentally small error at $u(1,y)$ with this composite.
+    The full composite can be written
+    $$u_c=\left\{\begin{array}{cc}(y-x)e^{1-y}-ye^{1-y-x/\e}+e^{-y-x/\e},&x<y\\(x-y)e^{1-x}-xe^{1-x-y/\e},&y<x\end{array}\right..$$
+    \eenum
+
+\item The problem changes considerably when we replace the boundary condition as stated above. We no longer have a piecewise continuous outer solution, which therefore implies we have a boundary layer on the characteristic line $x=y.$ In determining the outer solution, we satisfy the same boundary conditions as before, except the new boundary condition results in the solution
+    $$u(x,y)=\left\{\begin{array}{cc}e^{1-y},&x<y\\(x-y)e^{1-},&x>y\end{array}\right..$$
+    Thus we only satisfy the boundary conditions along the top of the domain and the right of the domain. We can see along the line $x=y$ this outer solution is not continuous. Thus we now have a third layer. We will begin by finding the inner solutions along the left and bottom sides of the domain.
+    \benum
+    \item First we let $x=\e \xi$ and $u(x,y;\e)=U(\xi,y;\e)$ then collect the resulting $O(1)$ terms in the PDE given by the transformed variables to get
+        $$U_{0\xi\xi}=-U_{0\xi},\;\;U_0(0,y)=e^{-y}.$$
+        This equation has the solution
+        $$U_0(\xi,y)=A_0(y)(1-e^{-\xi})+e^{-y}.$$
+        We then match the inner and outer solutions as $\e\to 0$ to find that
+        $$e^{1-y}=A_0(y)+e^{-y}\implies A_0(y)=e^{1-y}-e^{-y}.$$
+        Thus we know the inner solution is
+        $$U_0(x,y)=e^{1-y}-e^{1-y-x/\e}+e^{-y-x/\e}.$$
+        The inner solution is also the composite solution on the left:
+        $$u_{cl}=e^{1-y}+e^{1-y}-e^{1-y-x/\e}+e^{-y-x/\e}-e^{1-y}=e^{1-y}-e^{1-y-x/\e}+e^{-y-x/\e}.$$
+        The solution near the layer on the bottom of the domain is the same as before
+        $$u_{cr}=(x-y)e^{1-x}-xe^{1-x-y/\e}.$$
+    \item Now we inspect the layer along $x=y$. As the layer is parallel to the characteristics, we know it has thickness $O(\sqrt{\e}).$ Thus we let $x=y+\sqrt{\e}\eta$, and $u(x,y;\e)=v(\eta,y;\e)$ and we get the PDE
+        $$2v_{\eta\eta}-2\sqrt{\e}v_{\eta y}+\e v_{yy}+v_y+v=0.$$
+        Then if we let $v(\eta,y;\e)\sim v_0(\eta,y)$ we find the $O(1)$ PDE in the layer behaves like a reverse diffusion with source:
+        $$2v_{0\eta\eta}+v_{0y}+v_0=0.$$
+        We can use the tranformation $v_0(\eta,y)=e^{1-y}w_0(\eta,y)$ to get a simpler equation
+        $$w_{0\eta\eta}=\frac{-1}{2}w_{0y}.$$
+        We solve this equation by letting
+        $$w=f(\gamma)=f\left(\frac{-i\eta}{\sqrt{y}}\right).$$
+        This results in the differential equation for $\gamma$
+        $$f''(\gamma)=-\frac{\gamma}{4}f'(\gamma).$$
+        This equation has solution
+        $$f\left(\frac{-i\eta}{\sqrt{y}}\right)=\sqrt{2\pi}c_1 erf\left(\frac{-i\eta}{2\sqrt{2 y}}\right)+c_2=w_0(\eta,y).$$
+        $$\implies v_0(\eta,y)=e^{1-y}\sqrt{2\pi}c_1 erf\left(\frac{-i\eta}{2\sqrt{2 y}}\right)+c_2e^{1-y}.$$
+        We then write the inner solution in terms of the outer variable to find
+        $$v_0(x,y)=e^{1-y}\sqrt{2\pi}c_1 erf\left(\frac{i(y-x)}{2\sqrt{2y \e}}\right)+c_2 e^{1-y}.$$
+        Now if we let $\e\to 0$ we get
+        $$v_0\to \left\{\begin{array}{cc}c_1 \infty +c_2 e^{1-y},&x<y\\ -c_1 \infty +c_2 e^{1-y}, &\end{array}\right.$$
+        Now we rewrite the leading order outer solution in terms of the inner variable:
+        $$u_0(\eta,y)=\left\{\begin{array}{cc}e^{1-y},&x<y\\ \sqrt{\e}\eta e^{1-y-\sqrt{\e}\eta},&x>y\end{array}\right.$$
+        then we take the limit as $\e\to 0$ to find
+        $$u_0\to\left\{\begin{array}{cc}e^{1-y},&x<y\\0&x>y\end{array}\right..$$
+        Then clearly matching fails in this case, unless we take the trivial inner solution
+        $$v_0=e^{1-y}.$$
+        Instead, we must find some other way to match. The only method I could find that works is to take the modulus of the argument of the error function located in the inner solution. Perhaps there was a mistake in our derivation of the PDEs in the inner layer or their solutions. The other possibility is that the backwards diffusion equation's initial conditions require the solution be a real error function instead of an imaginary error function. Either way, we proceed by adjusting our inner solution to
+        $$v_0=e^{1-y}\sqrt{2\pi}c_1 erf\left(\frac{(y-x)}{2\sqrt{2y \e}}\right)+c_2 e^{1-y}.$$
+        Then when we limit $\e\to 0$ we get
+        $$v_0\sim \left\{\begin{array}{cc}e^{1-y}(\sqrt{2\pi}c_1+c_2),&x<y\\ e^{1-y}(c_2-\sqrt{2\pi c_1}), &x>y\end{array}\right..$$
+        Then matching gives us $c_1=1/(2\sqrt{2\pi})$ and $c_2=1/2$. Thus we have the matched inner solution
+        $$v_0(x,y)\frac{1}{2}e^{1-y}\left(erf\left(\frac{y-x}{2\sqrt{2\e y}}\right)+1\right).$$
+        Now we form the composite solution:
+        $$u_c=\left\{\begin{array}{cc}-e^{1-y-x/\e}+e^{-y-x/\e}+\frac{1}{2}\left(erf\left(\frac{y-x}{2\sqrt{2\e y}}\right)+1\right),&x<y\\ (x-y)e^{1-x}-xe^{1-x-y/\e}+\frac{1}{2}e^{1-y}\left(erf\left(\frac{y-x}{2\sqrt{2\e y}}\right)+1\right),&x>y\end{array}\right..$$
+        \eenum
+\eenum
+
+% Problem 3
+\item In class we had examined heat transfer on a flat plate in a uniform stream.  Now consider heat transfer from a cylinder of radius unity and center at the origin, placed in an otherwise uniform stream.  The flow velocity is given by $\bm u = \nabla \phi,$ where the potential $\phi$ is given in polar coordinates as
+\begin{equation*}
+\phi = \left(r+\frac{1}{r}  \right) \cos \th.
+\end{equation*}
+The temperature $T$ satisfies the PDE
+\begin{equation*}
+\bm u \cdot \nabla T = \e \nabla^2 T, \quad r \ge 1,
+\end{equation*}
+with boundary conditions
+\begin{equation*}
+T = 1 \;\text{on}\; r=1, \quad T \to 0 \; \text{as}\; r \to \infty.
+\end{equation*}
+Find the leading-order solution for $0 < \e \ll 1.$  Sketch a graph of the isotherms (lines of constant $T$).  Also, find an expression for $\partial T/\partial r,$ the heat flux, from the cylinder surface.
+
+\n Hint:  Look for a similarity solution of the PDE for the inner problem.\\
+
+Solution:\\
+
+We first derive the PDE governing the heat transference:
+$$\nabla\phi\cdot\nabla T=(1-\frac{1}{r^2})\cos\theta T_r-(\frac{1}{r}+\frac{1}{r^3})\sin\theta T_\theta$$
+$$\nabla^2 T= T_{rr}+\frac{1}{r}^2 T_{\theta\theta}+\frac{1}{r}T_r$$
+$$\implies (1-\frac{1}{r^2})\cos\theta T_r-(\frac{1}{r}+\frac{1}{r^3})\sin\theta T_\theta=\e(T_{rr}+\frac{1}{r}^2 T_{\theta\theta}+\frac{1}{r}T_r).$$
+Now we look at the $O(1)$ outer problem by letting $T(r,\theta;\e)\sim T_0(r,\theta)$ and collecting the appropriate terms:
+$$(1-\frac{1}{r^2})\cos\theta T_{0r}-(\frac{1}{r}+\frac{1}{r^3})\sin\theta T_{0\theta}=0.$$
+This equation has the solution
+$$T_0(r,\theta)=f\left(\log\left[\frac{1-r^2}{r}\sin\theta\right]\right).$$
+The conditions on $T$ imply that 
+$$T_0(\infty,\theta)=f(\infty)=0.$$
+We note here that we want the outer solution to satisfy the condition at $\infty$ because having a layer at infinity for gradual heat dissipation would be very strange. We then find that we have a boundary layer that is $O(\sqrt{\e})$ thick along the perimeter of the cylinder in the stream (as the characteristics run right around the cylinder). Thus we let $r=1+\sqrt{\e}\rho$ and $T(r,\theta;\e)=\tau(\rho,\theta;\e)$ and we find the leading order problem in the layer
+$$2(\rho\cos\theta \tau_{0\rho}-\sin\theta\tau_{0\theta})=\tau_{0\rho\rho}$$
+where $\tau(\rho,\theta;\e)\sim\tau_0(\rho,\theta).$ To solve this PDE we let
+$$\tau_0(\rho,\theta)=f(\eta)=f\left(\frac{\rho}{\sqrt{g(\theta)}}\right).$$
+This results in the eigenvalue problem
+$$2\cos\theta g(\theta)+\sin\theta g'(\theta)=\frac{f''(\eta)}{\eta f'(\eta)}=\lambda,$$
+thereby giving us two equations:
+$$g'+2\cot\theta g=\lambda\csc\theta,$$
+and
+$$f''=\lambda\eta f'.$$
+The first equation has solution
+$$g=c_1\csc^2\theta-\lambda\cot\theta\csc\theta.$$
+while the second equation has the solution
+$$f=k\sqrt{\frac{\pi}{2|\lambda|}}erf\left(\frac{\sqrt{|\lambda|}\eta}{\sqrt{2}}\right)+c_2.$$
+We note that this solution results from choosing $\lambda<0$ to aid in matching later on. We then let $\lambda=-1$ for ease of computation and $c_1=0$ as we are not interested in the homogeneous solution to the $g(\theta)$ equation. This gives the inner solution
+$$\tau_0(\rho,\theta)=k\sqrt{\frac{\pi}{2}}erf\left(\frac{\rho\sin\theta}{\sqrt{2\cos\theta}}\right)+c_2.$$
+We then apply the boundary condition at $r=1$ to find
+$$\tau_0(0,\theta)=c_2=1.$$
+Hence the inner solution is
+$$\tau_0(\rho,\theta)=k\sqrt{\frac{\pi}{2}}erf\left(\frac{\rho\sin\theta}{\sqrt{2\cos\theta}}\right)+1.$$
+To perform the matching, we let $\rho\to \infty$ in the inner solution and $r\to 1$ in the inner solution and find
+$$\tau_0\to k\sqrt{\frac{\pi}{2}}+1,$$
+$$T_0\to f(-\infty).$$
+Therefore we let
+$$k=\sqrt{\frac{2}{\pi}}(f(-\infty)-1).$$
+The inner solution is then (in terms of the outer variable)
+$$\tau_0(r,\theta)=(f(-\infty)-1)erf\left(\frac{(r-1)\sin\theta}{\sqrt{2\e\cos\theta}}\right)+1.$$
+The composite solution is then
+$$T_c=-f(-\infty)+(f(-\infty)-1)erf\left(\frac{(r-1)\sin\theta}{\sqrt{2\e\cos\theta}}\right)+1+f\left(\log\left[\frac{1-r^2}{r}\sin\theta\right]\right),$$
+with the condition that $f(\infty)=0.$ Now to find $\partial T/\partial r$ we simply differentiate the composite solution to find
+$$\frac{\partial T}{\partial r}=-\sqrt{\frac{2}{\pi}}\frac{\sin\theta\exp\left[\frac{-(r-1)^2\sin^2\theta}{2\e\cos\theta}\right]}{\sqrt{\e\cos\theta}}+f'\left(\log\left[\frac{1-r^2}{r}\sin\theta\right]\right)\frac{r^2+1}{r^3-r}.$$
+I do not understand how to draw the graph of the isotherms, so that part is not included here.
+
+
+
+
+
+\eenum
+
+
+
+\enddocument} 
